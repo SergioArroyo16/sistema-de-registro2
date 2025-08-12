@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        #cuadro {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Proyecto Práctico - 10 Ejercicios de JavaScript</h1>
+
+    <!-- 1. Cambiar texto -->
+    <section>
+        <h2>1. Cambiar texto</h2>
+        <p id="parrafo">Texto original</p>
+        <button onclick="cambiarTexto()">Cambiar texto</button>
+    </section>
+
+    <!-- 2. Cambiar fondo -->
+    <section>
+        <h2>2. Cambiar color de fondo</h2>
+        <button onclick="cambiarFondo()">Cambiar fondo</button>
+    </section>
+
+    <!-- 3. Mostrar/Ocultar -->
+    <section>
+        <h2>3. Mostrar/Ocultar mensaje</h2>
+        <p id="mensaje">¡Hola mundo!</p>
+        <button onclick="toggleMensaje()">Mostrar/Ocultar</button>
+    </section>
+
+    <!-- 4. Cambiar tamaño de texto -->
+    <section>
+        <h2>4. Cambiar tamaño del texto</h2>
+        <p id="texto">Texto con tamaño variable</p>
+        <button onclick="aumentar()">Aumentar</button>
+        <button onclick="disminuir()">Disminuir</button>
+    </section>
+
+    <!-- 5. Validar input -->
+    <section>
+        <h2>5. Validar campo de texto</h2>
+        <input id="nombre" placeholder="Escribe tu nombre">
+        <button onclick="validar()">Validar</button>
+        <p id="resultado"></p>
+    </section>
+
+    <!-- 6. Cambiar color de div -->
+    <section>
+        <h2>6. Cambiar color del cuadro</h2>
+        <button onclick="cambiarColor('blue')">Azul</button>
+        <button onclick="cambiarColor('green')">Verde</button>
+        <div id="cuadro"></div>
+    </section>
+
+    <!-- 7. Contador simple -->
+    <section>
+        <h2>7. Contador simple</h2>
+        <p id="contador">0</p>
+        <button onclick="incrementar()">+</button>
+        <button onclick="decrementar()">-</button>
+    </section>
+
+    <!-- 8. Cambiar imagen -->
+    <section>
+        <h2>8. Cambiar imagen al hacer clic</h2>
+        <img id="imagen" src="https://via.placeholder.com/150" onclick="cambiarImagen()" style="cursor:pointer">
+    </section>
+
+    <!-- 9. Lista dinámica -->
+    <section>
+        <h2>9. Lista dinámica</h2>
+        <input id="item" placeholder="Agregar ítem">
+        <button onclick="agregar()">Agregar</button>
+        <ul id="lista"></ul>
+    </section>
+
+    <!-- 10. Temporizador -->
+    <section>
+        <h2>10. Temporizador</h2>
+        <p id="temporizador">0</p>
+        <button onclick="iniciar()">Iniciar</button>
+        <button onclick="detener()">Detener</button>
+    </section>
+
+    <script>
+        function cambiarTexto() {
+            document.getElementById("parrafo").textContent = "Texto cambiado";
+        }
+
+        function cambiarFondo() {
+            document.body.style.backgroundColor = "lightblue";
+        }
+
+        function toggleMensaje() {
+            const mensaje = document.getElementById("mensaje");
+            mensaje.style.display = mensaje.style.display === "none" ? "block" : "none";
+        }
+
+        let tamaño = 16;
+        function aumentar() {
+            tamaño += 2;
+            document.getElementById("texto").style.fontSize = tamaño + "px";
+        }
+        function disminuir() {
+            tamaño -= 2;
+            document.getElementById("texto").style.fontSize = tamaño + "px";
+        }
+
+        function validar() {
+            const valor = document.getElementById("nombre").value.trim();
+            const mensaje = valor === "" ? "Campo vacío" : "¡Hola, " + valor + "!";
+            document.getElementById("resultado").textContent = mensaje;
+        }
+
+        function cambiarColor(color) {
+            document.getElementById("cuadro").style.backgroundColor = color;
+        }
+
+        let cuenta = 0;
+        function incrementar() {
+            cuenta++;
+            document.getElementById("contador").textContent = cuenta;
+        }
+        function decrementar() {
+            cuenta--;
+            document.getElementById("contador").textContent = cuenta;
+        }
+
+        function cambiarImagen() {
+            const img = document.getElementById("imagen");
+            img.src = img.src.includes("150") ? "https://via.placeholder.com/200" : "https://via.placeholder.com/150";
+        }
+
+        function agregar() {
+            const texto = document.getElementById("item").value.trim();
+            if (texto !== "") {
+                const li = document.createElement("li");
+                li.textContent = texto;
+                document.getElementById("lista").appendChild(li);
+                document.getElementById("item").value = "";
+            }
+        }
+
+        let segundos = 0;
+        let intervalo;
+        function iniciar() {
+            detener();
+            intervalo = setInterval(() => {
+                segundos++;
+                document.getElementById("temporizador").textContent = segundos;
+            }, 1000);
+        }
+
+        function detener() {
+            clearInterval(intervalo);
+        }
+    </script>
+
+</body>
+
+</html>

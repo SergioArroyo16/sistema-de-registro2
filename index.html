@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
+    <div>
+        <p id="parrafo">Texto original</p>
+        <button onclick="cambiarTexto()">Cambiar texto</button>
+    </div>
+
+    <div>
+        <button onclick="cambiarColorFondo()">Cambiar color de fondo</button>
+    </div>
+
+    <div>
+        <p id="mensajeAOcultar">Hola, soy el texto que se ocultará!</p>
+        <button onclick="mostrarOcultar()">Mostrar/Ocultar</button>
+    </div>
+
+    <div>
+        <p id="textoTamaño">Soy el mensaje que cambiará de tamaño</p>
+        <button onclick="aumentarTamañoTexto()">Aumentar tamaño</button>
+        <button onclick="disminuirTamañoTexto()">Disminuir tamaño</button>
+    </div>
+
+    <div>
+        <label>Ingresa tu nombre y se validará sí está vacío</label>
+        <input id="validarCampo" type="text" placeholder="Escribe aquí tu nombre">
+
+        <input type="submit" value="Validar" onclick="validarCampo()">
+        <p id="resultado"></p>
+    </div>
+
+    <img id="imagen" src="img/ff043987-239b-4661-bdb1-7f4ca6092c48.png" onclick="cambiarImagen()" style="cursor:pointer">
+
+
+
+
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
